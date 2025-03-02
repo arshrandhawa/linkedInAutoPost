@@ -2,14 +2,11 @@
 name: Deploy LinkedIn Auto Poster
 
 on:
-  # Trigger on push to the repository
-  push:
-    branches:
-      - main 
-  
-  # Trigger on schedule (daily at 10:30 AM UTC)
+  # Trigger on schedule (at two times: 10:30 AM Phoenix and 4:05 AM Phoenix)
   schedule:
-    - cron: '30 10 * * *' 
+    - cron: '30 17 * * *'  # Runs daily at 5:30 PM UTC (10:30 AM Phoenix)
+    - cron: '5 11 * * *'   # Runs daily at 11:05 AM UTC (4:05 AM Phoenix)
+
 
 jobs:
   run_script:
