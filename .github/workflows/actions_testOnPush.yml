@@ -30,3 +30,18 @@ jobs:
           USER_1: ${{ secrets.USER_1 }}
           USER_2: ${{ secrets.USER_2 }}
         run: python main_v2.py
+
+      - name: Commit updated log file
+        run: |
+          git config --global user.email "arshdip.randhawa@gmail.com"
+          git config --global user.name "Arshdeep Randhawa"
+          git add data/scheduler_log.txt
+          git commit -m "Update scheduler log"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token to push changes
+
+      - name: Check log file content
+        run: |
+          cat data/scheduler_log.txt
+
