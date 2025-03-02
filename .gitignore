@@ -1,0 +1,22 @@
+# Ignore .env file to keep secrets secure
+.env
+
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore IDE-specific files (e.g., VS Code, PyCharm)
+.vscode/
+.idea/
+
+# Ignore system files (e.g., macOS, Windows)
+.DS_Store
+Thumbs.db
+
+# Ignore virtual environment directories
+venv/
+.env/
