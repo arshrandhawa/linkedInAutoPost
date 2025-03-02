@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[1]:
 
 
 import os
@@ -12,23 +12,23 @@ import json
 from datetime import datetime
 
 
-# In[8]:
+# In[2]:
 
 
 # Load environment variables
 load_dotenv()
 
 credentials = {
-    "CLIENT_ID": os.getenv('CLIENT_ID'),
-    "CLIENT_SECRET": os.getenv('CLIENT_SECRET'),
-    "ACCESS_TOKEN_1": os.getenv('ACCESS_TOKEN'),
-    "ACCESS_TOKEN_2": os.getenv('ACCESS_TOKEN_2'),
-    "USER_1": os.getenv('USER_1'),
-    "USER_2": os.getenv('USER_2')
+    "CLIENT_ID": os.environ.get('CLIENT_ID'),
+    "CLIENT_SECRET": os.environ.get('CLIENT_SECRET'),
+    "ACCESS_TOKEN_1": os.environ.get('ACCESS_TOKEN'),
+    "ACCESS_TOKEN_2": os.environ.get('ACCESS_TOKEN_2'),
+    "USER_1": os.environ.get('USER_1'),
+    "USER_2": os.environ.get('USER_2')
 }
 
 
-# In[5]:
+# In[28]:
 
 
 ## CODE FOR TESTING
@@ -53,7 +53,7 @@ credentials = {
 #print(response.status_code, response.json())
 
 
-# In[21]:
+# In[29]:
 
 
 # Define the path to your JSON file
@@ -66,7 +66,7 @@ with open(json_file_path, 'r', encoding='utf-8') as file:
 #print(scheduled_posts)
 
 
-# In[9]:
+# In[13]:
 
 
 def create_linkedin_post(user_urn, access_token, post_text):
@@ -105,7 +105,7 @@ def create_linkedin_post(user_urn, access_token, post_text):
 #create_linkedin_post(credentials['USER_2'], credentials['ACCESS_TOKEN_2'], "Hello LinkedIn! This is another automated post!")
 
 
-# In[11]:
+# In[10]:
 
 
 # Function to check and post on the current date
@@ -131,7 +131,7 @@ def check_and_post():
     return "No posts scheduled for today"
 
 
-# In[22]:
+# In[27]:
 
 
 log_file = os.path.join('data', 'scheduler_log.txt')
@@ -141,8 +141,30 @@ def log_message(message):
         log.write(f"{datetime.now()} - {message}\n")
 
 try:
-    result = check_and_post()  # Call function and capture response
-    log_message(f"Response: {result}")  # Log the response directly
+    for user_id, posts in scheduled_posts.items():
+        for post in posts:
+            try:
+                today = datetime.now().date().isoformat()
+                if post["date"] == today:
+                    content = post["content"]
+                    
+                    # Ensure content is a string, even if it's a list
+                    if isinstance(content, list):
+                        content = "\n".join(
+                            content[:1] +  
+                            [line if not line.startswith("- ") else f"• {line[2:]}" for line in content[1:]]
+                        )
+
+                    access_token = credentials['ACCESS_TOKEN_1'] if user_id == "USER_1" else credentials['ACCESS_TOKEN_2']
+                    user_urn = credentials['USER_1'] if user_id == "USER_1" else credentials['USER_2']
+
+                    response = create_linkedin_post(user_urn, access_token, content)
+                    
+                    log_message(f"Success: Posted for {user_id} - Response: {response}")
+
+            except Exception as post_error:
+                log_message(f"Error posting for {user_id}: {post_error}")
+
 except Exception as e:
     log_message(f"Failure: Exception occurred - {e}")
 
