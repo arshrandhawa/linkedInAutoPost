@@ -3,7 +3,7 @@
 	{
             "date": "2025-03-02",
             "content": [
-                "GitHubCronJobs"
+                "GitHubCronJobsx"
             ]
         },
 
@@ -160,7 +160,7 @@
                 "Yes, I am just testing the post. Below is just the test if list shows up properly in a test. Also, testing if bullet points are working. This is test text:",
                 "- a",
                 "- b",
-                "- c",
+                "- c.",
                 "- d",
                 "- e."
             ]
