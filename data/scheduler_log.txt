@@ -1,2 +1,0 @@
-2025-03-02 22:41:04.934066 - Error posting for USER_1: Error creating post: 422 - {"errorDetailType":"com.linkedin.common.error.BadRequest","message":"com.linkedin.content.common.exception.BadRequestResponseException: Content is a duplicate of urn:li:share:7302095631215472640","errorDetails":{"inputErrors":[{"description":"Duplicate post is detected","input":{},"code":"DUPLICATE_POST"}]},"status":422}
-2025-03-02 22:41:05.199845 - Success: Posted for USER_2 - Response: {'id': 'urn:li:share:7302095631970418688'}

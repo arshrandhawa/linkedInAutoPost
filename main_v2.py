@@ -160,11 +160,12 @@ try:
 
                     response = create_linkedin_post(user_urn, access_token, content)
                     
-                    log_message(f"Success: Posted for {user_id} - Response: {response}")
+                    log_message(f"Success: Posted for {user_id}")
 
             except Exception as post_error:
-                log_message(f"Error posting for {user_id}: {post_error}")
-
+                description = "Run local copy to get full error log"
+                log_message(f"Error posting for {user_id}: {description}")
+                
 except Exception as e:
     log_message(f"Failure: Exception occurred - {e}")
 
