@@ -2,10 +2,9 @@
 name: Deploy LinkedIn Auto Poster
 
 on:
-  # Trigger on schedule (at two times: 10:30 AM Phoenix and 4:15 PM Phoenix)
   schedule:
-    - cron: '30 17 * * *'  # Runs daily at 5:30 PM UTC (10:30 AM Phoenix)
-    - cron: '15 23 * * *'  # Runs daily at 11:15 PM UTC (4:15 PM Phoenix)
+    - cron: '25 16 * * *'
+    - cron: '15 23 * * *'
 
 jobs:
   run_script:
