@@ -2,3 +2,5 @@
 2025-03-02 22:55:05.072553 - Success: Posted for USER_2
 2025-03-02 23:25:39.798683 - Success: Posted for USER_1
 2025-03-02 23:25:40.056726 - Success: Posted for USER_2
+2025-03-02 23:31:30.776993 - Error posting for USER_1: Run local copy to get full error log
+2025-03-02 23:31:30.983452 - Error posting for USER_2: Run local copy to get full error log
