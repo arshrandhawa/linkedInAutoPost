@@ -32,8 +32,8 @@ jobs:
 
       - name: Commit updated log file
         run: |
-          git config --global user.email "arshdip.randhawa@gmail.com"
-          git config --global user.name "Arshdeep Randhawa"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git add data/scheduler_log.txt
           git commit -m "Update scheduler log"
           git push
