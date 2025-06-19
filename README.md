@@ -21,7 +21,7 @@
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/arshrandhawa/DataScientistPortfolio/blob/main/README.md">
+      <a href="https://github.com/arshrandhawa/DataSciencePortfolio/blob/main/README.md">
         <img src="https://img.shields.io/badge/-Data_Science-purple?style=for-the-badge&logo=scikit-learn&scale=4" alt="Data Science">
       </a>
     </td>
