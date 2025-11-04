@@ -60,8 +60,7 @@ credentials = {
 json_file_path = os.path.join('data', 'scheduled_posts.json')
 
 # Load the JSON data
-
-with open("data/scheduled_posts.json", "r", encoding="utf-8") as file:
+with open(json_file_path, 'r', encoding='utf-8') as file:
     scheduled_posts = json.load(file)
 
 #print(scheduled_posts)
