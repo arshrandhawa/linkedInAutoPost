@@ -4,22 +4,16 @@
     {
       "date": "2025-11-04",
       "content": [
-        "Your stakeholder says \"I need a dashboard by Friday.\"",
-        "But here's what they really mean: \"I need a decision made by Friday, and I need data to make it.\"",
-        "Most analysts jump straight to Tableau. But the real work happens before the viz—in your SQL.",
-        "A poorly structured query = a poorly structured insight.",
-        "The dashboard is just the delivery mechanism. The architecture is where value lives.",
-        "What's the last insight that actually changed a decision at your company?",
-        "#DataArchitecture #SQL #Analytics"
+        "Testing."
       ]
     },
     {
       "date": "2025-11-06",
       "content": [
         "I spent my first year as an analyst chasing every ad-hoc request.",
-        "\"Can you pull this?\", \"Can you build that?\", \"Can you slice it differently?\"",
+        "Can you pull this?, Can you build that?, Can you slice it differently?",
         "I was productive. I was busy. I was also exhausted.",
-        "Then I learned: saying \"no\" to ad-hoc is saying \"yes\" to automation.",
+        "Then I learned: saying no to ad-hoc is saying yes to automation.",
         "Now? Self-service analytics. dbt pipelines. Trusted data models.",
         "My team doesn't ask me for reports anymore. They build them themselves.",
         "That's not laziness. That's leverage.",
@@ -43,7 +37,7 @@
     {
       "date": "2025-11-13",
       "content": [
-        "Hot take: Most \"complex\" SQL is just poorly organized SQL.",
+        "Hot take: Most complex SQL is just poorly organized SQL.",
         "I see CTEs nested 8 layers deep. Subqueries within subqueries. Window functions chained like a Rube Goldberg machine.",
         "Then someone inherits the code and has a panic attack.",
         "Here's what separates senior analysts from junior ones: readability.",
@@ -56,7 +50,7 @@
     {
       "date": "2025-11-18",
       "content": [
-        "\"We need to reduce costs.\"",
+        "We need to reduce costs.",
         "Translation: Your Snowflake bill is scaring the finance team.",
         "Most people think it's about bigger compute clusters or faster queries.",
         "Wrong. It's about data architecture.",
@@ -71,7 +65,7 @@
       "date": "2025-11-20",
       "content": [
         "You build the perfect data model. Everything is normalized. Documentation is immaculate.",
-        "Then a stakeholder asks: \"Can we add this metric?\"",
+        "Then a stakeholder asks: Can we add this metric?",
         "And everything breaks.",
         "This is where most teams fail. They optimize for today's needs, not tomorrow's flexibility.",
         "Scalable data architecture means building for *future* questions you don't even know yet.",
@@ -87,7 +81,7 @@
         "I just spent 6 hours debugging a data pipeline that failed at 3 AM.",
         "The root cause? Someone hardcoded a date filter.",
         "No error handling. No logging. No graceful failure.",
-        "This is why orchestration and monitoring aren't \"nice to have\"—they're foundational.",
+        "This is why orchestration and monitoring aren't nice to have—they're foundational.",
         "Production pipelines need to be bulletproof. They need to fail *loudly*, not silently.",
         "Python + dbt orchestration + comprehensive logging = peace of mind.",
         "Your data reliability is only as good as your error handling.",
@@ -125,10 +119,10 @@
     {
       "date": "2025-12-04",
       "content": [
-        "Three years ago: \"Can we get a report?\"",
-        "Two years ago: \"Can we automate that?\"",
-        "One year ago: \"Can we build a predictive model?\"",
-        "Now: \"How do we empower teams to ask their own questions?\"",
+        "Three years ago: Can we get a report?",
+        "Two years ago: Can we automate that?",
+        "One year ago: Can we build a predictive model?",
+        "Now: How do we empower teams to ask their own questions?",
         "That's the career arc of a data professional going from individual contributor to architect.",
         "You stop building dashboards. You start building *systems* that let others build dashboards.",
         "From execution to enablement. That's where the real impact lives.",
@@ -152,7 +146,7 @@
     {
       "date": "2025-12-11",
       "content": [
-        "You're writing SQL and thinking: \"This query is getting too complex. Maybe I should break it into smaller pieces.\"",
+        "You're writing SQL and thinking: This query is getting too complex. Maybe I should break it into smaller pieces.",
         "Stop second-guessing yourself. That instinct is right.",
         "Complex SQL that *looks* elegant but is impossible to debug is technical debt masquerading as cleverness.",
         "Break it down. Use CTEs. Add comments. Make it readable.",
@@ -178,7 +172,7 @@
     {
       "date": "2025-12-18",
       "content": [
-        "Your boss asks: \"Why is our data pipeline taking longer?\"",
+        "Your boss asks: Why is our data pipeline taking longer?",
         "You spend two hours investigating and find: a table scan instead of using an index.",
         "You fix it. Pipeline runs 5x faster.",
         "But did you solve the problem or just the symptom?",
@@ -191,7 +185,7 @@
     {
       "date": "2025-12-23",
       "content": [
-        "You're building a data pipeline and thinking: \"Should I use Python or SQL for this transformation?\"",
+        "You're building a data pipeline and thinking: Should I use Python or SQL for this transformation?",
         "Here's the real answer: both.",
         "Python for complex logic, business rules, and things SQL can't cleanly express.",
         "SQL for the heavy lifting—joins, aggregations, filtering massive datasets.",
@@ -235,7 +229,7 @@
         "Here's my challenge for every data professional:",
         "Build one thing that eliminates an entire category of ad-hoc requests.",
         "Could be a dashboard. Could be a self-service reporting layer. Could be a data app.",
-        "Something that says: \"Your teams don't need to ask me anymore.\"",
+        "Something that says: Your teams don't need to ask me anymore.",
         "That's leverage. That's growth. That's how you move from doing to enabling.",
         "What's the one thing you'd automate if you had the bandwidth?",
         "#NewYearNewGoals #DataStrategy #Analytics"
@@ -248,7 +242,7 @@
         "Biggest lesson: scale is a feature, not a bug.",
         "Most teams optimize for small datasets, then panic when they hit scale.",
         "But if you architect for scale from day one, everything else becomes easier.",
-        "Partition strategies that seemed \"overkill\" at 100GB become essential at 5TB.",
+        "Partition strategies that seemed overkill at 100GB become essential at 5TB.",
         "dbt tests that felt slow on small data become lifesaving on big data.",
         "Think in terms of 10x growth, not 10% growth.",
         "Are you building for your data today or your data in three years?",
@@ -284,13 +278,13 @@
     {
       "date": "2026-01-15",
       "content": [
-        "Your team says: \"We need real-time analytics.\"",
-        "Your gut says: \"Good luck with that.\"",
+        "Your team says: We need real-time analytics.",
+        "Your gut says: Good luck with that.",
         "But here's the truth: you probably don't need real-time. You need *faster than you have now*.",
         "Real-time is expensive, complex, and usually overkill.",
         "A well-designed ELT pipeline running hourly? That's enterprise-grade.",
         "Know the difference between a business requirement and a tech requirement.",
-        "Most \"real-time\" conversations end when someone says: \"What decision can't wait an hour?\"",
+        "Most real-time conversations end when someone says: What decision can't wait an hour?",
         "#DataPipelines #RequirementsGathering #Pragmatism"
       ]
     },
@@ -311,7 +305,7 @@
       "date": "2026-01-22",
       "content": [
         "I mentored someone from junior analyst to senior engineer.",
-        "The turning point? When they stopped asking \"Is this right?\" and started asking \"Why are we doing this?\"",
+        "The turning point? When they stopped asking Is this right? and started asking Why are we doing this?",
         "That shift from execution to strategy is everything.",
         "It's not about knowing more SQL. It's about understanding business impact.",
         "Anyone can run a query. Not everyone can ask the *right* question.",
@@ -334,8 +328,8 @@
     {
       "date": "2026-01-29",
       "content": [
-        "Your stakeholder asks: \"Can you make this dashboard interactive?\"",
-        "You say: \"Yes, but here's the trade-off...\"",
+        "Your stakeholder asks: Can you make this dashboard interactive?",
+        "You say: Yes, but here's the trade-off...",
         "This is where architecture meets reality.",
         "A self-service dashboard means users query the data themselves. That means performance, governance, and reliability become *their* problems too.",
         "Sometimes a simple, read-only dashboard beats a beautiful, slow one.",
@@ -347,7 +341,7 @@
     {
       "date": "2026-02-03",
       "content": [
-        "You're reviewing someone's SQL and thinking: \"This is inefficient, but it works.\"",
+        "You're reviewing someone's SQL and thinking: This is inefficient, but it works.",
         "Do you refactor it now or leave it?",
         "If it runs once a week on a small dataset? Leave it. Technical debt isn't always worth paying.",
         "If it's a critical path query running thousands of times daily? Refactor it.",
@@ -386,7 +380,7 @@
     {
       "date": "2026-02-12",
       "content": [
-        "A junior analyst says: \"I'll just hardcode this date filter.\"",
+        "A junior analyst says: I'll just hardcode this date filter.",
         "You feel that familiar cringe.",
         "Stop and teach: why dynamic is better than hardcoded. Why parameters beat manual changes. Why automation beats manual work.",
         "That five-minute lesson prevents five years of maintenance headaches.",
@@ -417,8 +411,8 @@
         "Their eyes glaze over.",
         "Here's what they actually want to know: is it reliable? Is it fast? Can we change it?",
         "Translate technical into business.",
-        "Not: \"We're using incremental dbt models with late-binding views.\"",
-        "But: \"Changes update automatically. We get results 10x faster. New requirements take days instead of weeks.\"",
+        "Not: We're using incremental dbt models with late-binding views.",
+        "But: Changes update automatically. We get results 10x faster. New requirements take days instead of weeks.",
         "Bridge the gap between what you build and why it matters.",
         "#Communication #Leadership #Influence"
       ]
@@ -454,16 +448,6 @@
 
 
   "USER_2": [
-    {
-      "date": "2025-11-04",
-      "content": [
-        "When a patient says, \"My tooth stopped hurting, so it must be fine,\" it often means the nerve has died.",
-        "The infection hasn't gone, it's just silent now.",
-        "That's like saying your phone's dead, so the alarm can't ring. The problem's still there, it's just muted.",
-        "Pain relief doesn't always mean healing.",
-        "#DentalEducation #RootCanalAwareness #SilentInfections"
-      ]
-    },
     {
       "date": "2025-11-06",
       "content": [
@@ -537,7 +521,7 @@
         "Tooth sensitivity is your mouth's early warning system.",
         "If cold drinks or sweet foods cause a sharp twinge, your enamel may be thinning or gums receding.",
         "The fix could be as simple as a desensitizing toothpaste or as serious as a cavity or crack.",
-        "Don't wait for it to \"go away.\" It's your tooth talking.",
+        "Don't wait for it to go away. It's your tooth talking.",
         "#SensitiveTeeth #DentalCare #PreventiveDentistry"
       ]
     },
@@ -564,7 +548,7 @@
     {
       "date": "2025-12-11",
       "content": [
-        "The best advice I ever got: \"Let your bad days teach you, not define you.\"",
+        "The best advice I ever got: Let your bad days teach you, not define you.",
         "Some days you'll finish late, get a tough review, or redo a filling.",
         "It's okay. The dentist you're becoming is shaped in those quiet moments of self-review.",
         "Keep showing up. That's the real growth.",
@@ -640,9 +624,9 @@
     {
       "date": "2026-01-08",
       "content": [
-        "There's a phase every new dentist goes through: the \"Is this normal?\" phase.",
+        "There's a phase every new dentist goes through: the Is this normal? phase.",
         "Abnormal bleeding after an extraction, a nervous patient, a schedule that runs behind, it's all part of the learning curve.",
-        "Over time, your \"panic\" moments become \"problem-solving\" moments.",
+        "Over time, your panic moments become problem-solving moments.",
         "That's when you know you're growing.",
         "#NewDentistLife #ClinicalGrowth #DentistryJourney"
       ]
@@ -707,7 +691,7 @@
     {
       "date": "2026-02-03",
       "content": [
-        "Patients often say, \"I didn't come earlier because it didn't hurt.\"",
+        "Patients often say, I didn't come earlier because it didn't hurt.",
         "I showed her the X-ray. The infection had quietly reached the bone.",
         "Pain isn't the first sign of trouble, it's the last alarm.",
         "Teeth whisper before they scream.",
