@@ -61,8 +61,8 @@ json_file_path = os.path.join('data', 'scheduled_posts.json')
 
 # Load the JSON data
 with open(json_file_path, 'r', encoding='utf-8') as file:
-    text = file.read().replace('\r\n', '\n')  # normalize newlines
-    scheduled_posts =  ast.literal_eval(json.dumps(text))
+    scheduled_posts = ast.literal_eval(file.read())
+
 #print(scheduled_posts)
 
 
