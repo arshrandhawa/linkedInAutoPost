@@ -3,7 +3,7 @@ name: Deploy LinkedIn Auto Poster
 
 on:
   schedule:
-    - cron: '50 21 * * *'
+    - cron: '30 17 * * *'  # 10:30 AM Arizona
 
 jobs:
   run_script:
