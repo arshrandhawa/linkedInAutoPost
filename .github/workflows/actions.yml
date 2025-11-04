@@ -1,4 +1,3 @@
-
 name: Deploy LinkedIn Auto Poster
 
 on:
@@ -19,6 +18,14 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Debug scheduled_posts.json head
+        run: |
+          echo "======= HEAD ======="
+          sed -n '1,20p' scheduled_posts.json
+          echo "======= HEX ======="
+          xxd -p -l 20 scheduled_posts.json
+          echo "===================="
 
       - name: Run LinkedIn Poster
         env:
