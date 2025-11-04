@@ -1,0 +1,46 @@
+name: Deploy Auto Poster
+
+on:
+  workflow_dispatch:   # Enables manual trigger
+  # Uncomment below if you want to keep scheduled runs as well
+  # schedule:
+  #   - cron: '30 17 * * *'
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run LinkedIn Poster
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_2: ${{ secrets.ACCESS_TOKEN_2 }}
+          USER_1: ${{ secrets.USER_1 }}
+          USER_2: ${{ secrets.USER_2 }}
+        run: python main_v2.py
+
+      - name: Commit updated log file
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add data/scheduler_log.txt
+          git commit -m "Update scheduler log"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check log file content
+        run: |
+          cat data/scheduler_log.txt
