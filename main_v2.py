@@ -28,38 +28,65 @@ debug_log_file = os.path.join('data', 'debuglog.txt')
 
 def log_message(message):
     """Log to scheduler_log.txt"""
-    with open(log_file, "a") as log:
-        log.write(f"{datetime.now()} - {message}\n")
+    try:
+        os.makedirs('data', exist_ok=True)
+        with open(log_file, "a", encoding='utf-8') as log:
+            log.write(f"{datetime.now()} - {message}\n")
+    except Exception as e:
+        print(f"Error logging: {e}")
 
 def debug_log(message, error=None):
     """Log to debuglog.txt with detailed information"""
-    with open(debug_log_file, "a") as log:
-        if error:
-            log.write(f"{datetime.now()} - {message}\n")
-            log.write(f"  Error: {error}\n")
-            log.write(f"  Traceback: {traceback.format_exc()}\n")
-        else:
-            log.write(f"{datetime.now()} - {message}\n")
-        log.write("---\n")
+    try:
+        os.makedirs('data', exist_ok=True)
+        with open(debug_log_file, "a", encoding='utf-8') as log:
+            if error:
+                log.write(f"{datetime.now()} - {message}\n")
+                log.write(f"  Error: {error}\n")
+                log.write(f"  Traceback: {traceback.format_exc()}\n")
+            else:
+                log.write(f"{datetime.now()} - {message}\n")
+            log.write("---\n")
+    except Exception as e:
+        print(f"Error debug logging: {e}")
 
-# Load JSON data with debug logging
-try:
-    json_file_path = os.path.join('data', 'scheduled_posts.json')
-    debug_log(f"Attempting to load JSON from: {json_file_path}")
-    
-    with open(json_file_path, 'r', encoding='utf-8') as file:
-        scheduled_posts = json.load(file)
-    
-    debug_log(f"✅ JSON loaded successfully")
-    debug_log(f"USER_1 posts count: {len(scheduled_posts.get('USER_1', []))}")
-    debug_log(f"USER_2 posts count: {len(scheduled_posts.get('USER_2', []))}")
-    
-except FileNotFoundError as e:
-    debug_log(f"❌ JSON file not found", e)
-except json.JSONDecodeError as e:
-    debug_log(f"❌ JSON parsing error", e)
-except Exception as e:
-    debug_log(f"❌ Unexpected error loading JSON", e)
+# Load JSON data with multiple encoding attempts
+scheduled_posts = None
+json_file_path = os.path.join('data', 'scheduled_posts.json')
+
+debug_log(f"Attempting to load JSON from: {json_file_path}")
+
+# Try different encodings
+encodings = ['utf-8-sig', 'utf-8', 'utf-16', 'latin-1', 'cp1252']
+
+for encoding in encodings:
+    try:
+        debug_log(f"Trying encoding: {encoding}")
+        with open(json_file_path, 'r', encoding=encoding) as file:
+            raw_content = file.read()
+        
+        # Try to parse
+        scheduled_posts = json.loads(raw_content)
+        debug_log(f"✅ Successfully loaded JSON with encoding: {encoding}")
+        debug_log(f"USER_1 posts: {len(scheduled_posts.get('USER_1', []))}")
+        debug_log(f"USER_2 posts: {len(scheduled_posts.get('USER_2', []))}")
+        break
+        
+    except UnicodeDecodeError as e:
+        debug_log(f"❌ Encoding {encoding} failed (UnicodeDecodeError)", e)
+        continue
+    except json.JSONDecodeError as e:
+        debug_log(f"❌ Encoding {encoding} failed (JSONDecodeError: line {e.lineno}, col {e.colno})", e)
+        continue
+    except Exception as e:
+        debug_log(f"❌ Encoding {encoding} failed (Unexpected error)", e)
+        continue
+
+if scheduled_posts is None:
+    debug_log("❌ CRITICAL: Could not load JSON with any encoding")
+    log_message("CRITICAL: JSON file could not be loaded with any encoding")
+    print("ERROR: Could not load JSON file")
+    exit(1)
 
 
 def create_linkedin_post(user_urn, access_token, post_text):
@@ -93,12 +120,12 @@ def create_linkedin_post(user_urn, access_token, post_text):
     response = requests.post(url, headers=headers, json=post_data)
     
     debug_log(f"Response status code: {response.status_code}")
-    debug_log(f"Response body: {response.text}")
     
     if response.status_code == 201:
         debug_log(f"✅ Post created successfully")
         return response.json()
     else:
+        debug_log(f"❌ API Error: {response.status_code} - {response.text}")
         raise Exception(f"Error creating post: {response.status_code} - {response.text}")
 
 
@@ -106,7 +133,6 @@ def create_linkedin_post(user_urn, access_token, post_text):
 try:
     today = datetime.now().date().isoformat()
     debug_log(f"Starting posting check for date: {today}")
-    debug_log(f"Credentials loaded - USER_1: {credentials['USER_1']}, USER_2: {credentials['USER_2']}")
     
     post_count = 0
     
@@ -116,31 +142,24 @@ try:
         for idx, post in enumerate(posts):
             try:
                 post_date = post.get("date")
-                debug_log(f"  Post {idx}: date={post_date}, today={today}, match={post_date == today}")
                 
                 if post_date == today:
-                    debug_log(f"  ✅ Date match found for {user_id}")
+                    debug_log(f"✅ Date match found for {user_id} (post {idx})")
                     post_count += 1
                     
                     content = post.get("content", [])
-                    debug_log(f"  Content type: {type(content)}, length: {len(content)}")
                     
                     # Ensure content is a string, even if it's a list
                     if isinstance(content, list):
-                        debug_log(f"  Converting content from list to string")
                         content = "\n".join(
                             content[:1] +  
                             [line if not line.startswith("- ") else f"• {line[2:]}" for line in content[1:]]
                         )
                     
-                    debug_log(f"  Final content length: {len(content)} characters")
-                    debug_log(f"  First 100 chars: {content[:100]}")
+                    debug_log(f"Content length: {len(content)} characters")
                     
                     access_token = credentials['ACCESS_TOKEN_1'] if user_id == "USER_1" else credentials['ACCESS_TOKEN_2']
                     user_urn = credentials['USER_1'] if user_id == "USER_1" else credentials['USER_2']
-                    
-                    debug_log(f"  Using access_token: {access_token[:20]}...")
-                    debug_log(f"  Using user_urn: {user_urn}")
                     
                     response = create_linkedin_post(user_urn, access_token, content)
                     
@@ -151,11 +170,16 @@ try:
                 debug_log(f"❌ Error posting for {user_id} on post {idx}", post_error)
                 log_message(f"Error posting for {user_id}: {str(post_error)}")
     
-    debug_log(f"Posting check completed. Total posts matching today: {post_count}")
     if post_count == 0:
         debug_log(f"⚠️ No posts scheduled for today ({today})")
         log_message(f"No posts scheduled for today ({today})")
+    else:
+        debug_log(f"✅ Posting check completed. Total posts posted: {post_count}")
                 
 except Exception as e:
-    debug_log(f"❌ Failure: Exception occurred in main loop", e)
-    log_message(f"Failure: Exception occurred - {str(e)}")
+    debug_log(f"❌ CRITICAL: Exception in main loop", e)
+    log_message(f"CRITICAL: Exception occurred - {str(e)}")
+    print(f"ERROR: {e}")
+    exit(1)
+
+print("✅ Script completed successfully")
