@@ -66,7 +66,9 @@ for encoding in encodings:
             raw_content = file.read()
         
         # Try to parse
-        scheduled_posts = json.loads(raw_content)
+        with open("data/scheduled_posts.json", "r", encoding="utf-8") as file:
+            scheduled_posts = json.load(file)
+
         debug_log(f"✅ Successfully loaded JSON with encoding: {encoding}")
         debug_log(f"USER_1 posts: {len(scheduled_posts.get('USER_1', []))}")
         debug_log(f"USER_2 posts: {len(scheduled_posts.get('USER_2', []))}")
