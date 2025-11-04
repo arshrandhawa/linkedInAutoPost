@@ -1,17 +1,18 @@
 {
-   "USER_1":[
-      {
-         "date":"2025-11-04",
-         "content":[
-            "Your stakeholder says I need a dashboard by Friday.",
-            "But here's what they really mean: I need a decision made by Friday, and I need data to make it.",
-            "Most analysts jump straight to Tableau. But the real work happens before the viz—in your SQL.",
-            "A poorly structured query = a poorly structured insight.",
-            "The dashboard is just the delivery mechanism. The architecture is where value lives.",
-            "What's the last insight that actually changed a decision at your company?",
-            "#DataArchitecture #SQL #Analytics"
-         ]
-      },
+  "USER_1": [
+    {
+      "date": "2025-11-04",
+      "content": [
+        "Mastering Advanced SQL Window Functions for Analytics Excellence",
+        "Many analysts stop at ROW_NUMBER() and RANK(), but window functions go much deeper. They allow you to perform powerful calculations across sets of rows without collapsing your dataset.",
+        "For example:",
+        "- LAG() / LEAD() – Compare a row’s value to previous or next periods without self-joins.",
+        "- NTILE() – Segment data into equal buckets for performance distribution analysis.",
+        "- SUM() OVER(PARTITION...) – Running totals, moving averages, and cumulative counts.",
+        "In business problem solving, these functions transform reporting into actionable insights—especially for customer retention, churn prediction, and operational performance tracking. Advanced SQL is not just syntax—it’s strategic data thinking.",
+        "#AdvancedSQL #Analytics #BusinessIntelligence"
+      ]
+    },
       {
          "date":"2025-11-06",
          "content":[
