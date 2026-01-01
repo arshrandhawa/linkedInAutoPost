@@ -161,3 +161,5 @@
 2025-12-25 17:43:41.820064 - Success: Posted for USER_2
 2025-12-30 17:46:00.307334 - Success: Posted for USER_1
 2025-12-30 17:46:00.739235 - Success: Posted for USER_2
+2026-01-01 17:44:17.779849 - Error posting for USER_1: Run local copy to get full error log
+2026-01-01 17:44:18.011638 - Error posting for USER_2: Run local copy to get full error log
